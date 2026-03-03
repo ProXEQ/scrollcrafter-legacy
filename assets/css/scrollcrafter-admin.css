@@ -83,6 +83,53 @@
     height: 16px;
 }
 
+/* Donation Badge / Button */
+.sc-license-badge.donation {
+    background: linear-gradient(135deg, #FFDD00 0%, #F7931E 100%);
+    color: #1a1a2e;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(247, 147, 30, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sc-license-badge.donation:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(247, 147, 30, 0.5);
+    color: #000;
+}
+
+.sc-license-badge.donation .dashicons-heart {
+    color: #e11d48;
+    animation: scHeartPulse 2s infinite;
+}
+
+@keyframes scHeartPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.3);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.15);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 /* Tabs */
 .sc-tabs {
     display: flex;
@@ -507,4 +554,31 @@
     margin: 0 0 10px;
     font-size: 13px;
     color: var(--sc-text-muted);
+}
+
+.sc-support-option .button-primary {
+    background: linear-gradient(135deg, #FFDD00 0%, #F7931E 100%) !important;
+    border: none !important;
+    color: #1a1a2e !important;
+    font-weight: 700 !important;
+    padding: 10px 20px !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 12px rgba(247, 147, 30, 0.2) !important;
+    text-shadow: none !important;
+}
+
+.sc-support-option .button-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(247, 147, 30, 0.4) !important;
+    background: linear-gradient(135deg, #ffeb3b 0%, #fb8c00 100%) !important;
+}
+
+.sc-support-option .button:not(.button-primary) {
+    border-radius: 8px;
+    padding: 8px 16px;
+    height: auto;
+    font-weight: 500;
 }
