@@ -147,6 +147,35 @@ async function fetchValidation(scriptContent, options = {}) {
   }
 }
 
+/**
+ * Helper to copy text to clipboard with fallback for non-secure contexts
+ * @param {string} text 
+ * @returns {Promise}
+ */
+async function copyToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  } else {
+    // Fallback for non-secure contexts
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      textArea.remove();
+      return Promise.resolve();
+    } catch (err) {
+      textArea.remove();
+      return Promise.reject(err);
+    }
+  }
+}
+
 const dslLanguage = StreamLanguage.define({
   startState() { return {}; },
   token(stream) {
@@ -866,7 +895,7 @@ function getEditorDoc() { return cmView ? cmView.state.doc.toString() : ''; }
     if (copyBtn) {
       copyBtn.onclick = () => {
         const code = getEditorDoc();
-        navigator.clipboard.writeText(code).then(() => {
+        copyToClipboard(code).then(() => {
           const oldText = statusText.textContent;
           const oldColor = statusText.style.color;
           statusText.textContent = __('Copied to clipboard!', 'scrollcrafter');
@@ -875,6 +904,8 @@ function getEditorDoc() { return cmView ? cmView.state.doc.toString() : ''; }
             statusText.textContent = oldText;
             statusText.style.color = oldColor;
           }, 2000);
+        }).catch(err => {
+          console.error('[SC Editor] Copy failed:', err);
         });
       };
     }
