@@ -67,10 +67,13 @@ Example DSL:
 
 = 1.2.4.2 =
 * Fix: Resolved "Expired Link" error when saving settings caused by nested form nonce collision.
+* Fix: Resolved "Copy to Clipboard" button failure in non-secure (HTTP) environments.
+* UI: Premium redesign of the DSL Editor with glassmorphism and refined animations.
+* UI: Coffee-themed premium styling for "Support Project" buttons with heart pulse animation.
 * Fix: Resolved issue where Lenis smooth scroll bypassed Elementor's "Disable Page Scrolling" setting in popups.
 * Fix: Completely decommissioned "Ghost" and "Minimize" modes from the DSL Editor for improved stability and simplicity.
-* Fix: Wrapped all frontend console logs in conditional debug checks to ensure a clean browser console in production.
-* Tweak: Final stabilization and cleanup of the codebase for its long-term open-source status.
+* Fix: Wrapped all frontend console logs in conditional debug checks.
+* Tweak: Updated documentation to reflect the project's permanent Legacy status.
 
 = 1.2.3 =
 * Fix: Resolved "hard/stiff" scroll feeling when Lenis smooth scrolling is disabled.
